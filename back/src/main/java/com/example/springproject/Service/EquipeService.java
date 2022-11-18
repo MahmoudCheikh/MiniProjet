@@ -1,5 +1,4 @@
 package com.example.springproject.Service;
-
 import com.example.springproject.Entity.Equipe;
 import com.example.springproject.Repository.EquipeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,32 +9,37 @@ import java.util.List;
 @Service
 
 public class EquipeService implements IEquipeService {
-    @Autowired
-    private EquipeRepository myRepository;
+  @Autowired
+  private EquipeRepository myRepository;
+  @Autowired
+  private com.example.springproject.Repository.EquipeRepository EquipeRepository;
 
-  public int ajouterEquipe(Equipe E) {
-    myRepository.save(E);
-    if (myRepository.findById((long) E.getIdEquipe()).equals(E))
-      return 1;
-    else
-      return 0;
+  @Override
+  public int ajouterEquipe(Equipe C) {
+    EquipeRepository.save(C);
+    return 1;
   }
 
-  public Boolean DeleteEquipe(Equipe E) {
-    myRepository.delete(E);
-    return !myRepository.findById((long) E.getIdEquipe()).equals(E);
+  @Override
+  public Boolean deleteEquipe(Equipe C) {
+    EquipeRepository.delete(C);
+    return true;
   }
 
-  public Boolean UpdateEquipe(Equipe E) {
-    myRepository.delete(E);
-    return myRepository.findById((long) E.getIdEquipe()).equals(E);
+
+  @Override
+  public Boolean updateEquipe(Equipe C) {
+    EquipeRepository.save(C);
+    return EquipeRepository.findById((Integer) C.getIdEquipe()).equals(C);
   }
 
-  public List<Equipe> findAll(Equipe E) {
-    return (List<Equipe>) myRepository.findAll();
+  @Override
+  public List<Equipe> findAll() {
+    return (List<Equipe>) EquipeRepository.findAll();
   }
 
-  public Equipe findById(Equipe E) {
-    return myRepository.findById((long) E.getIdEquipe()).get();
+  @Override
+  public Equipe findById(Integer U) {
+    return EquipeRepository.findById(U).get();
   }
 }

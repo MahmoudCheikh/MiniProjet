@@ -1,11 +1,8 @@
 package com.example.springproject.Controller;
 
 import com.example.springproject.Entity.Universite;
-import com.example.springproject.Entity.Universite;
-import com.example.springproject.Service.IUniversiteService;
 import com.example.springproject.Service.IUniversiteService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,28 +22,28 @@ public class UniversiteController {
 
     @PostMapping("/addUniversite")
     @ResponseBody
-    public Universite ajouterUniversite(@RequestBody Universite c) {
-        int Universite = universiteService.ajouterUniversite(c);
-        return c;
+    public Universite ajouterUniversite(@RequestBody Universite u) {
+        int Universite = universiteService.ajouterUniversite(u);
+        return u;
     }
 
     @DeleteMapping("/removeUniversite/{Universite-id}")
     @ResponseBody
-    public void removeUniversite(@PathVariable("Universite-id") Universite c) {
+    public void removeUniversite(@PathVariable("Universite-id") Universite u) {
 
-        universiteService.deleteUniversite(c);
+        universiteService.deleteUniversite(u);
     }
 
     @GetMapping("/retrieveUniversite/{Universite-id}")
     @ResponseBody
-    public Universite retrieveContart(@PathVariable("Universite-id") Integer c) {
-        return universiteService.findById(c);
+    public Universite retrieveContart(@PathVariable("Universite-id") Integer u) {
+        return universiteService.findById(u);
     }
 
     @PutMapping("/modifyUniversite")
     @ResponseBody
-    public Universite updateUniversite(@RequestBody Universite c) {
-        Boolean Universite = universiteService.updateUniversite(c);
-        return c;
+    public Universite updateUniversite(@RequestBody Universite u) {
+        Boolean Universite = universiteService.updateUniversite(u);
+        return u;
     }
 }

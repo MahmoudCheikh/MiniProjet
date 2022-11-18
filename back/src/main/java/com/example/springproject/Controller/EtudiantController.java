@@ -2,9 +2,7 @@ package com.example.springproject.Controller;
 
 import com.example.springproject.Entity.Etudiant;
 import com.example.springproject.Service.IEtudiantService;
-import com.example.springproject.Service.IEtudiantService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,28 +22,28 @@ public class EtudiantController {
 
     @PostMapping("/addEtudiant")
     @ResponseBody
-    public Etudiant ajouterEtudiant(@RequestBody Etudiant c) {
-        int Etudiant = EtudiantService.ajouterEtudiant(c);
-        return c;
+    public Etudiant ajouterEtudiant(@RequestBody Etudiant e) {
+        int Etudiant = EtudiantService.ajouterEtudiant(e);
+        return e;
     }
 
     @DeleteMapping("/removeEtudiant/{Etudiant-id}")
     @ResponseBody
-    public void removeEtudiant(@PathVariable("Etudiant-id") Etudiant c) {
+    public void removeEtudiant(@PathVariable("Etudiant-id") Etudiant e) {
 
-        EtudiantService.deleteEtudiant(c);
+        EtudiantService.deleteEtudiant(e);
     }
 
     @GetMapping("/retrieveEtudiant/{Etudiant-id}")
     @ResponseBody
-    public Etudiant retrieveContart(@PathVariable("Etudiant-id") Integer c) {
-        return EtudiantService.findById(c);
+    public Etudiant retrieveContart(@PathVariable("Etudiant-id") Integer e) {
+        return EtudiantService.findById(e);
     }
 
     @PutMapping("/modifyEtudiant")
     @ResponseBody
-    public Etudiant updateEtudiant(@RequestBody Etudiant c) {
-        Boolean Etudiant = EtudiantService.updateEtudiant(c);
-        return c;
+    public Etudiant updateEtudiant(@RequestBody Etudiant e) {
+        Boolean Etudiant = EtudiantService.updateEtudiant(e);
+        return e;
     }
 }

@@ -1,9 +1,6 @@
 package com.example.springproject.Service;
 
 import com.example.springproject.Entity.Universite;
-import com.example.springproject.Entity.Equipe;
-import com.example.springproject.Entity.Universite;
-import com.example.springproject.Repository.UniversiteRepository;
 import com.example.springproject.Repository.UniversiteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -1,6 +1,5 @@
 package com.example.springproject.Service;
 
-import com.example.springproject.Entity.Departement;
 import com.example.springproject.Entity.DetailEquipe;
 import com.example.springproject.Repository.DetailEquipRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,32 +10,36 @@ import java.util.List;
 @Service
 
 public class DetailEquipeService implements IDetailEquipeService {
-    @Autowired
-    private DetailEquipRepository myRepository;
+  @Autowired
+  private DetailEquipRepository DetailEquipeRepository;
 
-  public int ajouterDetailEquipe(DetailEquipe D) {
-    myRepository.save(D);
-    if (myRepository.findById((long) D.getSalle()).equals(D))
-      return 1;
-    else
-      return 0;
+
+  @Override
+  public int ajouterDetailEquipe(DetailEquipe C) {
+    DetailEquipeRepository.save(C);
+    return 1;
   }
 
-  public Boolean DeleteDetailEquip(DetailEquipe D) {
-    myRepository.delete(D);
-    return !myRepository.findById((long) D.getSalle()).equals(D);
+  @Override
+  public Boolean deleteDetailEquipe(DetailEquipe C) {
+    DetailEquipeRepository.delete(C);
+    return true;
   }
 
-  public Boolean UpdateDetailEquipe(DetailEquipe D) {
-    myRepository.delete(D);
-    return myRepository.findById((long) D.getSalle()).equals(D);
+
+  @Override
+  public Boolean updateDetailEquipe(DetailEquipe C) {
+    DetailEquipeRepository.save(C);
+    return DetailEquipeRepository.findById((Integer) C.getSalle()).equals(C);
   }
 
-  public List<DetailEquipe> findAll(DetailEquipe D) {
-    return (List<DetailEquipe>) myRepository.findAll();
+  @Override
+  public List<DetailEquipe> findAll() {
+    return (List<DetailEquipe>) DetailEquipeRepository.findAll();
   }
 
-  public DetailEquipe findById(DetailEquipe D) {
-    return myRepository.findById((long) D.getSalle()).get();
+  @Override
+  public DetailEquipe findById(Integer U) {
+    return DetailEquipeRepository.findById(U).get();
   }
 }
