@@ -1,6 +1,8 @@
 package com.example.springproject.Service;
 
 import com.example.springproject.Entity.Etudiant;
+import com.example.springproject.Entity.Etudiant;
+import com.example.springproject.Repository.EtudiantRepository;
 import com.example.springproject.Repository.EtudiantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,31 +13,34 @@ import java.util.List;
 
 public class EtudiantService implements IEtudiantService {
     @Autowired
-    private EtudiantRepository myRepository;
+    private EtudiantRepository EtudiantRepository;
 
-  public int ajouterEtudiant(Etudiant E) {
-    myRepository.save(E);
-    if (myRepository.findById((long) E.getIdEtudaint()).equals(E))
-      return 1;
-    else
-      return 0;
+  @Override
+  public int ajouterEtudiant(Etudiant C) {
+    EtudiantRepository.save(C);
+    return 1;
   }
 
-  public Boolean DeleteEtudiant(Etudiant E) {
-    myRepository.delete(E);
-    return !myRepository.findById((long) E.getIdEtudaint()).equals(E);
+  @Override
+  public Boolean deleteEtudiant(Etudiant C) {
+    EtudiantRepository.delete(C);
+    return true;
   }
 
-  public Boolean UpdateEtudiant(Etudiant E) {
-    myRepository.delete(E);
-    return myRepository.findById((long) E.getIdEtudaint()).equals(E);
+
+  @Override
+  public Boolean updateEtudiant(Etudiant C) {
+    EtudiantRepository.save(C);
+    return  EtudiantRepository.findById((Integer) C.getIdEtudaint()).equals(C);
   }
 
-  public List<Etudiant> findAll(Etudiant E) {
-    return (List<Etudiant>) myRepository.findAll();
+  @Override
+  public List<Etudiant> findAll() {
+    return (List<Etudiant>) EtudiantRepository.findAll();
   }
 
-  public Etudiant findById(Etudiant E) {
-    return myRepository.findById((long) E.getIdEtudaint()).get();
+  @Override
+  public Etudiant findById(Integer U) {
+    return EtudiantRepository.findById(U).get();
   }
 }

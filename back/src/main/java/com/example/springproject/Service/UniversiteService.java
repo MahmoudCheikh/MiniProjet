@@ -1,7 +1,9 @@
 package com.example.springproject.Service;
 
+import com.example.springproject.Entity.Universite;
 import com.example.springproject.Entity.Equipe;
 import com.example.springproject.Entity.Universite;
+import com.example.springproject.Repository.UniversiteRepository;
 import com.example.springproject.Repository.UniversiteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,31 +14,34 @@ import java.util.List;
 
 public class UniversiteService implements IUniversiteService {
     @Autowired
-    private UniversiteRepository myRepository;
+    private UniversiteRepository UniversiteRepository;
 
-  public int ajouterUniversite(Universite U) {
-    myRepository.save(U);
-    if (myRepository.findById((long) U.getIdUniv()).equals(U))
-      return 1;
-    else
-      return 0;
+  @Override
+  public int ajouterUniversite(Universite C) {
+    UniversiteRepository.save(C);
+    return 1;
   }
 
-  public Boolean DeleteUniversite(Universite U) {
-    myRepository.delete(U);
-    return !myRepository.findById((long) U.getIdUniv()).equals(U);
+  @Override
+  public Boolean deleteUniversite(Universite C) {
+    UniversiteRepository.delete(C);
+    return true;
   }
 
-  public Boolean UpdateUniversite(Universite U) {
-    myRepository.delete(U);
-    return myRepository.findById((long) U.getIdUniv()).equals(U);
+
+  @Override
+  public Boolean updateUniversite(Universite C) {
+    UniversiteRepository.save(C);
+    return  UniversiteRepository.findById((Integer) C.getIdUniv()).equals(C);
   }
 
-  public List<Universite> findAll(Universite U) {
-    return (List<Universite>) myRepository.findAll();
+  @Override
+  public List<Universite> findAll() {
+    return (List<Universite>) UniversiteRepository.findAll();
   }
 
-  public Universite findById(Universite U) {
-    return myRepository.findById((long) U .getIdUniv()).get();
+  @Override
+  public Universite findById(Integer U) {
+    return UniversiteRepository.findById(U).get();
   }
 }
