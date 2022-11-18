@@ -16,27 +16,26 @@ public class DepartementService implements IDepartementService {
 
   public int ajouterDepartement(Departement D) {
     myRepository.save(D);
-    if (myRepository.findById((long) D.getIdDepart()).equals(D))
-      return 1;
-    else
-      return 0;
+  return 1;
   }
 
   public Boolean DeleteDepartement(Departement D) {
     myRepository.delete(D);
-    return !myRepository.findById((long) D.getIdDepart()).equals(D);
+    return true;
   }
 
   public Boolean UpdateDepartement(Departement D) {
-    myRepository.delete(D);
-    return myRepository.findById((long) D.getIdDepart()).equals(D);
+    myRepository.save(D);
+    return myRepository.findById((Integer) D.getIdDepart()).equals(D);
   }
 
-  public List<Departement> findAll(Departement D) {
+  @Override
+  public List<Departement> findAll() {
     return (List<Departement>) myRepository.findAll();
   }
 
-  public Departement findById(Departement D) {
-    return myRepository.findById((long) D.getIdDepart()).get();
+  @Override
+  public Departement findById(Integer D) {
+    return myRepository.findById(D).get();
   }
 }

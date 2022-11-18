@@ -6,7 +6,7 @@ import com.example.springproject.Entity.Departement;
 import java.util.List;
 
 public interface IDepartementService {
- /*
+
     int ajouterDepartement(Departement D);
 
     Boolean DeleteDepartement(Departement D);
@@ -15,7 +15,7 @@ public interface IDepartementService {
 
     List<Departement> findAll();
 
-    Departement findById(Departement D);
+    Departement findById(Integer D);
 
-  */
+
 }
