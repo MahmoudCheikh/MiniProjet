@@ -1,7 +1,6 @@
 package com.example.springproject.Service;
 
 import com.example.springproject.Entity.Paiement;
-import com.example.springproject.Entity.Universite;
 import com.example.springproject.Repository.PaiementRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
