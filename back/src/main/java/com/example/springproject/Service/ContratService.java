@@ -1,7 +1,9 @@
 package com.example.springproject.Service;
 
 import com.example.springproject.Entity.Contrat;
+import com.example.springproject.Entity.Etudiant;
 import com.example.springproject.Repository.ContratRepository;
+import com.example.springproject.Repository.EtudiantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +13,7 @@ import java.util.List;
 public class ContratService implements IContratService {
     @Autowired
     private ContratRepository myRepository;
+    private EtudiantRepository etudiantRepository;
 
     @Override
     public int ajouterContrat(Contrat C) {
@@ -39,5 +42,15 @@ public class ContratService implements IContratService {
     @Override
     public Contrat findById(Integer C) {
         return myRepository.findById(C).get();
+    }
+
+    public Contrat affectContratToEtudiant(Contrat ce, String nomE, String prenomE) {
+        Etudiant e=etudiantRepository.findOneByNomEAndPrenomE(nomE,prenomE);
+
+        e.getContratList().add(ce);
+        ce.setEtudiant(e);
+        myRepository.save(ce);
+        etudiantRepository.save(e);
+        return ce;
     }
 }

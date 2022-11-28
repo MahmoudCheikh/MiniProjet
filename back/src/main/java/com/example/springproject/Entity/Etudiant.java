@@ -31,4 +31,6 @@ public class Etudiant {
     @OneToMany(mappedBy = "etudiant",fetch = FetchType.EAGER)
     private List<Contrat> contratList;
 
+
+
 }
