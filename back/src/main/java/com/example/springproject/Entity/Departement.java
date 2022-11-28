@@ -1,4 +1,5 @@
 package com.example.springproject.Entity;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.*;
 
 import javax.persistence.*;
@@ -23,6 +24,7 @@ public class Departement {
         @ManyToOne()
         Universite universite;
 
+        @JsonBackReference
         @OneToMany(mappedBy = "departement")
         private List<Etudiant> etudiantList;
 }

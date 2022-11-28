@@ -19,7 +19,7 @@ public class Universite {
     private String nomUniv;
 
 
-    @OneToMany()
+    @OneToMany(fetch = FetchType.EAGER)
     private List<Departement> departementSet;
 
 }

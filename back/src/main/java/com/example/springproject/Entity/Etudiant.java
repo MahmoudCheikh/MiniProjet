@@ -28,7 +28,7 @@ public class Etudiant {
     @ManyToOne()
     Departement departement;
 
-    @OneToMany(mappedBy = "etudiant")
+    @OneToMany(mappedBy = "etudiant",fetch = FetchType.EAGER)
     private List<Contrat> contratList;
 
 }
