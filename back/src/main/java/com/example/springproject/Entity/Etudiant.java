@@ -32,5 +32,4 @@ public class Etudiant {
     private List<Contrat> contratList;
 
 
-
 }
