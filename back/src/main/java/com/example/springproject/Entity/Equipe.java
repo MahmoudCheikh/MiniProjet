@@ -2,6 +2,7 @@ package com.example.springproject.Entity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -19,6 +20,8 @@ public class Equipe {
     private String nomEquipe;
     private Niveau niveau;
 
+    @ManyToMany(cascade = CascadeType.ALL,mappedBy = "equipes")
+    private Set<Etudiant> etudiants;
 
     @OneToOne
     private DetailEquipe detailEquipe;

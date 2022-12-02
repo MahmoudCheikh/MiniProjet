@@ -46,7 +46,7 @@ public class ContratService implements IContratService {
         return myRepository.findById(C).get();
     }
 
-    public Contrat affectContratToEtudiant(Contrat ce, String nomE, String prenomE) {
+  /*  public Contrat affectContratToEtudiant(Contrat ce, String nomE, String prenomE) {
         Etudiant e=etudiantRepository.findOneByNomEAndPrenomE(nomE,prenomE);
 
         e.getContratList().add(ce);
@@ -54,7 +54,7 @@ public class ContratService implements IContratService {
         myRepository.save(ce);
         etudiantRepository.save(e);
         return ce;
-    }
+    }*/
 
 
 }

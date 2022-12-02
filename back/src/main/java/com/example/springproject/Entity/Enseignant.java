@@ -3,6 +3,7 @@ package com.example.springproject.Entity;
 import lombok.*;
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.List;
 
 @Getter
 @Setter
@@ -24,5 +25,7 @@ public class Enseignant {
     private Sexe sexe;
     private Date dateContrat;
     private Integer salaire;
+
+
 
 }

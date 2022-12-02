@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 
 @Getter
@@ -31,5 +32,7 @@ public class Etudiant {
     @OneToMany(mappedBy = "etudiant",fetch = FetchType.EAGER)
     private List<Contrat> contratList;
 
+    @ManyToMany(cascade = CascadeType.ALL)
+    private Set<Equipe> equipes;
 
 }

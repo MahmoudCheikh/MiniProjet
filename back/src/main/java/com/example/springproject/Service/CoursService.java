@@ -4,10 +4,11 @@ import com.example.springproject.Entity.Cours;
 import com.example.springproject.Repository.CoursRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 
 @Service
-public class CoursService implements ICoursService  {
+public class CoursService implements ICoursService {
     @Autowired
     private CoursRepository myRepository;
 
@@ -27,7 +28,7 @@ public class CoursService implements ICoursService  {
     @Override
     public Boolean updateCours(Cours C) {
         myRepository.save(C);
-        return  myRepository.findById((Integer) C.getIdCours()).equals(C);
+        return myRepository.findById((Integer) C.getIdCours()).equals(C);
     }
 
     @Override
