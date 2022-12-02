@@ -3,8 +3,10 @@ package com.example.springproject.Controller;
 import com.example.springproject.Entity.Contrat;
 import com.example.springproject.Service.IContratService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -24,7 +26,7 @@ public class ContratController {
     @PostMapping("/addContrat")
     @ResponseBody
     public Contrat ajouterContrat(@RequestBody Contrat c) {
-        int contrat = ContratService.ajouterContrat(c);
+        int Contrat = ContratService.ajouterContrat(c);
         return c;
     }
 
@@ -44,15 +46,34 @@ public class ContratController {
     @PutMapping("/modifyContrat")
     @ResponseBody
     public Contrat updateContrat(@RequestBody Contrat c) {
-        Boolean contrat = ContratService.updateContrat(c);
+        Boolean Contrat = ContratService.updateContrat(c);
         return c;
     }
 
-    /*
+        @GetMapping("/getChiffreAffaireEntreDeuxDate/{start}/{end}")
+        float getChiffreAffaireEntreDeuxDate(@PathVariable("start")@DateTimeFormat(pattern = "yyyy-MM-dd")  Date start,@PathVariable("end") @DateTimeFormat(pattern = "yyyy-MM-dd")  Date end){
+            return ContratService.getChiffreAffaireEntreDeuxDate(start,end);
+        }
 
+
+
+    @GetMapping("/contratBetween2dates/{start}/{end}")
+    List<Contrat> contratBetween2dates(@PathVariable("start") @DateTimeFormat(pattern = "yyyy-MM-dd") Date start, @PathVariable("end") @DateTimeFormat(pattern = "yyyy-MM-dd")  Date end){
+        return ContratService.contratBetween2dates(start,end);
+    }
+
+    @GetMapping("/nbrContratsValides/{end}/{start}")
+    Integer nbContratsValides(@PathVariable("end") @DateTimeFormat(pattern = "yyyy-MM-dd")  Date end ,@PathVariable("start")@DateTimeFormat(pattern = "yyyy-MM-dd")  Date start) {
+        return ContratService.nbContratsValides(end,start) ;
+    }
     @GetMapping("/contratExp/")
     List<Contrat> contratExp(){
-        return ContratService.contratExpiration();
+        return ContratService.contratExp();
     }
-     */
+    @GetMapping("/contratDepasseAn/")
+    List<Contrat> contratDepasseAn(){
+        return ContratService.contratDepasseAn();
+    }
+
+
 }

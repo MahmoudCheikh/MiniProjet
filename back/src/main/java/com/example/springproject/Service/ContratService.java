@@ -47,7 +47,7 @@ public class ContratService implements IContratService {
         return myRepository.findById(C).get();
     }
 
-/*
+
         @Override
         public float getChiffreAffaireEntreDeuxDate(Date startDate, Date endDate) {
             List<Contrat> listContrat=myRepository.contratBetween2dates(startDate,endDate);
@@ -69,7 +69,7 @@ public class ContratService implements IContratService {
             }
             return chiffre;
         }
-*/
+
     @Override
     public List<Contrat> contratBetween2dates(Date startDate, Date endDate) {
         return  myRepository.contratBetween2dates(startDate,endDate);
