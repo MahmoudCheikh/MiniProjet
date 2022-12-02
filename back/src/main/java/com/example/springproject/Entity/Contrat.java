@@ -1,32 +1,43 @@
 package com.example.springproject.Entity;
-import lombok.*;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
-import java.sql.Date;
-import java.util.List;
+import java.io.Serializable;
+import java.util.Date;
 
+@Entity
 @Getter
 @Setter
-@ToString
-@EqualsAndHashCode
-@Builder
-@Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "Contrat")
-public class Contrat {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id_contrat")
-    private Integer idContrat;
-    private Date dateDebutContrat;
-    private Date dateFinContrat;
-    private Specialite specialite;
-    private Boolean archive;
 
-    @ManyToOne()
+public class Contrat implements Serializable {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int idContrat;
+
+    @Temporal(TemporalType.DATE)
+    @Column(name = "dateFinContrat", nullable = false)
+
+
+    private Date dateFinContrat;
+    private Date dateDebutContrat;
+    private boolean archive;
+
+    private int montantContrat;
+
+    @Enumerated(EnumType.ORDINAL)
+    private Specialite specialite;
+    @JsonIgnoreProperties({"etudiant"})
+
+    @ManyToOne
     Etudiant etudiant;
 
-    @OneToMany(mappedBy = "contrat",fetch = FetchType.EAGER)
-    private List<Paiement> paiementList;
+
 }
