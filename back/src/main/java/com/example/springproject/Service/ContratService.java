@@ -5,8 +5,10 @@ import com.example.springproject.Entity.Etudiant;
 import com.example.springproject.Repository.ContratRepository;
 import com.example.springproject.Repository.EtudiantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -53,4 +55,6 @@ public class ContratService implements IContratService {
         etudiantRepository.save(e);
         return ce;
     }
+
+
 }

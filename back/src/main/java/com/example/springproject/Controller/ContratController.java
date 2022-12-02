@@ -47,4 +47,12 @@ public class ContratController {
         Boolean contrat = ContratService.updateContrat(c);
         return c;
     }
+
+    /*
+
+    @GetMapping("/contratExp/")
+    List<Contrat> contratExp(){
+        return ContratService.contratExpiration();
+    }
+     */
 }

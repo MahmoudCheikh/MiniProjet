@@ -14,4 +14,5 @@ public interface IEquipeService {
     List<Equipe> findAll();
 
     Equipe findById(Integer C);
+
 }

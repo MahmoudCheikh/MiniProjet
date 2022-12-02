@@ -13,5 +13,17 @@ public interface ContratRepository extends CrudRepository<Contrat,Integer> {
   @Query("select contrat from Contrat contrat join  Universite universite on contrat.etudiant.departement member universite.departementSet where universite.idUniv = ?1 ")
   public List<Contrat> getContratBy(Long x);
 
+  /*
+  @Query("select c from Contrat c where DATEDIFF(c.dateFinContrat,c.dateDebutContrat)>=365")
+  List<Contrat> contratDepasseAn();
+
+   */
+  /*
+  @Query("select  c from Contrat c where DATEDIFF(current_date,c.dateFinContrat)=-15")
+  List<Contrat> dateExpiration();
+
+
+   */
+
 
 }
