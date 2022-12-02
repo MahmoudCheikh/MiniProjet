@@ -31,7 +31,6 @@ public class EtudiantController {
     @DeleteMapping("/removeEtudiant/{Etudiant-id}")
     @ResponseBody
     public void removeEtudiant(@PathVariable("Etudiant-id") Etudiant e) {
-
         EtudiantService.deleteEtudiant(e);
     }
 
@@ -49,7 +48,20 @@ public class EtudiantController {
     }
 
     @PutMapping ("/affectContratToEtudiant/{nom}/{prenom}")
+    @ResponseBody
     public Contrat affectContratToEtudiant(@RequestBody Contrat c, @PathVariable("nom") String nom, @PathVariable("prenom") String prenom) {
         return affectContratToEtudiant(c,nom,prenom);
+    }
+
+    @PutMapping(value = "/addAndAssignEtudiantToEquipeAndContract/{idContrat}/{idequipe}")
+    @ResponseBody
+    public void addAndAssignEtudiantToEquipeAndContract(@RequestBody Etudiant etudiant, @PathVariable("idContrat")Integer idContrat,@PathVariable("idequipe") Integer idequipe ) {
+        EtudiantService.addAndAssignEtudiantToEquipeAndContract(etudiant,idContrat,idequipe);
+    }
+
+    @GetMapping("/list/{idDepart}")
+    @ResponseBody
+    List<Etudiant> retrieveAllEtudiants(@PathVariable("idDepart") Integer idDepart){
+        return EtudiantService.getEtudiantsByDepartement(idDepart);
     }
 }
