@@ -1,11 +1,10 @@
 package com.example.springproject.Service;
 
-import com.example.springproject.Entity.Contrat;
-import com.example.springproject.Entity.Equipe;
-import com.example.springproject.Entity.Etudiant;
+import com.example.springproject.Entity.*;
 import com.example.springproject.Entity.Etudiant;
 import com.example.springproject.Repository.ContratRepository;
 import com.example.springproject.Repository.EquipeRepository;
+import com.example.springproject.Repository.DepartementRepository;
 import com.example.springproject.Repository.EtudiantRepository;
 import com.example.springproject.Repository.EtudiantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,8 +18,12 @@ import java.util.List;
 public class EtudiantService implements IEtudiantService {
     @Autowired
     private EtudiantRepository EtudiantRepository;
-    private ContratRepository contratRepository;
+    @Autowired
   private EquipeRepository equipeRepository;
+  @Autowired
+  private DepartementRepository DepartementRepository;
+  @Autowired
+    private ContratRepository ContratRepository;
 
   @Override
   public int ajouterEtudiant(Etudiant C) {
@@ -51,19 +54,20 @@ public class EtudiantService implements IEtudiantService {
     return EtudiantRepository.findById(U).get();
   }
 
-
-  public Contrat affectContratToEtudiant(Contrat c, String nom, String prenom) {
-    Etudiant e=EtudiantRepository.findOneByNomEAndPrenomE(nom,prenom);
-
-    e.getContratList().add(c);
-    c.setEtudiant(e);
-    contratRepository.save(c);
-    EtudiantRepository.save(e);
-    return c;
-  }
   @Override
   public List<Etudiant> getEtudiantsByDepartement(Integer idDepart) {
     return EtudiantRepository.findEtudiantByDepartement(idDepart);
+  }
+  @Transactional
+  @Override
+  public void updateStudent(Integer studentId, Integer depId)
+  {
+    Etudiant e=EtudiantRepository.findById(studentId).orElseThrow(() -> new IllegalStateException("studenbt doesnt exist"));
+    Departement d= DepartementRepository.findById(depId).orElseThrow(() -> new IllegalStateException("dep doesnt exist"));
+    e.setDepartement(d);
+
+
+
   }
 
   @Transactional
@@ -80,5 +84,6 @@ public class EtudiantService implements IEtudiantService {
     return e ;
 
   }
+
 
 }

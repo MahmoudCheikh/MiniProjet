@@ -14,4 +14,6 @@ public interface IUniversiteService {
     List<Universite> findAll();
 
     Universite findById(Integer C);
+
+    void update_uni_dep(Integer uniId, Integer depId);
 }

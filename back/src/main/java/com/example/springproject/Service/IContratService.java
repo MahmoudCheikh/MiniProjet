@@ -28,6 +28,7 @@ public interface IContratService {
     List<Contrat> contratExp();
     List<Contrat> contratDepasseAn();
 
+    Contrat affectContratToEtudiant(int ce,String nomE,String prenomE);
 
 }
 

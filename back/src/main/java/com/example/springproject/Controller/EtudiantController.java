@@ -47,21 +47,26 @@ public class EtudiantController {
         return e;
     }
 
-    @PutMapping ("/affectContratToEtudiant/{nom}/{prenom}")
+    @PutMapping("/addAndAssignEtudiantToEquipeAndContract/{idContrat}/{idequipe}")
     @ResponseBody
-    public Contrat affectContratToEtudiant(@RequestBody Contrat c, @PathVariable("nom") String nom, @PathVariable("prenom") String prenom) {
-        return affectContratToEtudiant(c,nom,prenom);
-    }
-
-    @PutMapping(value = "/addAndAssignEtudiantToEquipeAndContract/{idContrat}/{idequipe}")
-    @ResponseBody
-    public void addAndAssignEtudiantToEquipeAndContract(@RequestBody Etudiant etudiant, @PathVariable("idContrat")Integer idContrat,@PathVariable("idequipe") Integer idequipe ) {
+    public void addAndAssignEtudiantToEquipeAndContract(@RequestBody Etudiant etudiant, @PathVariable("idContrat")Integer idContrat ,@PathVariable("idequipe") Integer idequipe ) {
         EtudiantService.addAndAssignEtudiantToEquipeAndContract(etudiant,idContrat,idequipe);
     }
 
     @GetMapping("/list/{idDepart}")
-    @ResponseBody
     List<Etudiant> retrieveAllEtudiants(@PathVariable("idDepart") Integer idDepart){
         return EtudiantService.getEtudiantsByDepartement(idDepart);
     }
+    @PutMapping(path="affecttodep/{studentId}/{depId}")
+    public void assignEtudiantToDepartement(@PathVariable("studentId") Integer studentId,@PathVariable("depId") Integer depId) throws IllegalStateException {
+
+        EtudiantService.updateStudent(studentId,depId);
+    }
+
+
+
+
+
+
+
 }

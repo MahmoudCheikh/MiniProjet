@@ -77,5 +77,9 @@ public class ContratController {
         return ContratService.contratDepasseAn();
     }
 
-
+    @PutMapping("/affectContratToEtudiant/{nomE}/{prenomE}")
+    public Contrat affectContratToEtudiant (@RequestBody Contrat ce,@PathVariable("nomE") String nomE,@PathVariable("prenomE") String prenomE) {
+        ContratService.affectContratToEtudiant(ce.getIdContrat(), nomE, prenomE);
+        return ce;
+    }
 }

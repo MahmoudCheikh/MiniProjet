@@ -25,6 +25,6 @@ public class Departement {
         Universite universite;
 
         @JsonBackReference
-        @OneToMany(mappedBy = "departement")
+        @OneToMany(cascade = CascadeType.ALL,mappedBy = "departement")
         private List<Etudiant> etudiantList;
 }

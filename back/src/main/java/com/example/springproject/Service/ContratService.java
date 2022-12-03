@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.Date;
 import java.util.List;
 
@@ -114,5 +115,9 @@ votre machine. Le message sera affiché simplement sur console.
         System.out.println(string);
         return string;
     }
-
+    @Transactional
+    public Contrat affectContratToEtudiant (int ce, String nomE,String prenomE){
+        myRepository.X(ce,nomE,prenomE);
+        return myRepository.findById(ce).get();
+    }
 }
