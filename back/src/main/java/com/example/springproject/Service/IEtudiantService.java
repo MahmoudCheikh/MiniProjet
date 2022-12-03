@@ -19,4 +19,5 @@ public interface IEtudiantService {
 
     List<Etudiant> getEtudiantsByDepartement(Integer idDepart);
 
+    void updateStudent(Integer studentId, Integer depId);
 }

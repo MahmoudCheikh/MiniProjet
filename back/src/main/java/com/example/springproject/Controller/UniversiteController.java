@@ -2,6 +2,7 @@ package com.example.springproject.Controller;
 
 import com.example.springproject.Entity.Universite;
 import com.example.springproject.Service.IUniversiteService;
+import com.example.springproject.Service.UniversiteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -46,4 +47,16 @@ public class UniversiteController {
         Boolean Universite = universiteService.updateUniversite(u);
         return u;
     }
+
+
+    @PostMapping("/adddeptouni/{uniId}/{depId}")
+    @ResponseBody
+    public void assignUniversiteToDepartement(@PathVariable("uniId") Integer uniId,@PathVariable("depId") Integer depId) {
+
+        universiteService.update_uni_dep(uniId,depId);
+    }
+
+
+
+
 }

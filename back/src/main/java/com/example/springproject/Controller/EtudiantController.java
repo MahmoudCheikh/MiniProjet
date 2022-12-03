@@ -57,4 +57,16 @@ public class EtudiantController {
     List<Etudiant> retrieveAllEtudiants(@PathVariable("idDepart") Integer idDepart){
         return EtudiantService.getEtudiantsByDepartement(idDepart);
     }
+    @PutMapping(path="affecttodep/{studentId}/{depId}")
+    public void assignEtudiantToDepartement(@PathVariable("studentId") Integer studentId,@PathVariable("depId") Integer depId) throws IllegalStateException {
+
+        EtudiantService.updateStudent(studentId,depId);
+    }
+
+
+
+
+
+
+
 }
