@@ -117,7 +117,7 @@ votre machine. Le message sera affiché simplement sur console.
     }
     @Transactional
     public Contrat affectContratToEtudiant (int ce, String nomE,String prenomE){
-        myRepository.findOneByNomEAndPrenomE(ce,nomE,prenomE);
+        myRepository.X(ce,nomE,prenomE);
         return myRepository.findById(ce).get();
     }
 }

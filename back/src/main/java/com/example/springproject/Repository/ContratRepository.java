@@ -2,6 +2,7 @@ package com.example.springproject.Repository;
 
 import com.example.springproject.Entity.Contrat;
 import com.example.springproject.Entity.Etudiant;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
@@ -33,7 +34,8 @@ public interface ContratRepository extends CrudRepository<Contrat,Integer> {
   @Query("select c from Contrat c where DATEDIFF(c.dateFinContrat,c.dateDebutContrat)>=365")
   List<Contrat> contratDepasseAn();
 
+  @Modifying
   @Query("update Contrat c set c.etudiant= (select e from Etudiant e where e.nomE=:nomE and e.prenomE=:prenomE) where c.idContrat=:ce")
-  public Contrat findOneByNomEAndPrenomE(@Param("ce") int ce, @Param("nomE") String nomE, @Param("prenomE") String prenomE);
+  public void  X(@Param("ce") int ce, @Param("nomE") String nomE, @Param("prenomE") String prenomE);
 
 }
