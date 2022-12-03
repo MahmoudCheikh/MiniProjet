@@ -113,39 +113,12 @@ public class ContratService implements IContratService {
         log.info(string.toString());
     }
 
-
-        return myRepository.dateExpi();
-
-    }
-
     @Override
     public List<Contrat> contratDepasseAn()
     {
         return myRepository.contratDepasseAn();
     }
 
-/*Nous souhaitons créer un service schedulé permettant d’avertir le responsable de la prévue pour les 15 prochains jours afin de contrat de l’étudiant concerné.
-Créer un service nous permettant d’afficher 13h en respectant la signature suivante :
-String retrieveStatusContrat();
-NB: Pour des raisons de test, vous pouvez modifier l’horaire selon l’heure affiché sur
-votre machine. Le message sera affiché simplement sur console.
-.*/
-
-    @Scheduled(cron = "*/60 * * * * * ")
-    public String retrieveStatusContrat()
-    {
-        List<Contrat> contrats=myRepository.dateExpi();
-        String string = "les contrats concernés tous les 15 jours :";
-        for (Contrat c : contrats){
-            string=string+"contrat id :"+c.getIdContrat()+"\n";
-            string=string+"contrat date fin :"+c.getDateFinContrat()+"\n";
-            string=string+"contrat debut date "+c.getDateDebutContrat()+"\n";
-            string =string+"specialité"+c.getSpecialite()+"\n";
-
-        }
-        System.out.println(string);
-        return string;
-    }
     @Transactional
     public Contrat affectContratToEtudiant (int ce, String nomE,String prenomE){
         myRepository.X(ce,nomE,prenomE);

@@ -23,7 +23,7 @@ public class EtudiantService implements IEtudiantService {
   @Autowired
   private DepartementRepository DepartementRepository;
   @Autowired
-    private ContratRepository ContratRepository;
+    private ContratRepository contratRepository;
 
   @Override
   public int ajouterEtudiant(Etudiant C) {
