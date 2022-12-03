@@ -1,7 +1,8 @@
 package com.example.springproject.Entity;
-import lombok.*;
 
+import lombok.*;
 import javax.persistence.*;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -19,7 +20,9 @@ public class Equipe {
     private String nomEquipe;
     private Niveau niveau;
 
-
+    @OneToMany
+    @JoinColumn(name = "etudiant_set_id_etudaint")
+    Set<Etudiant> etudiantSet;
     @OneToOne
     private DetailEquipe detailEquipe;
 }

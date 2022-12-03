@@ -17,6 +17,7 @@ import java.util.Set;
 public class EquipeService implements IEquipeService {
   @Autowired
   private EquipeRepository myRepository;
+  private ContratRepository contratRepository;
   @Autowired
   private com.example.springproject.Repository.EquipeRepository EquipeRepository;
 
@@ -49,19 +50,19 @@ public class EquipeService implements IEquipeService {
     return EquipeRepository.findById(U).get();
   }
 
-  /*
+
   @Scheduled(cron = "* * * 30 * *")
   public void faireEvoluerEquipes() {
     int cptEtudiant = 0;
     List<Equipe> equipes = (List<Equipe>) EquipeRepository.findAll();
-    List<Contrat> contatDepasseAn = ContratRepository.contratDepasseAn(); // afficher la liste des contrats depasse 1 an
+    List<Contrat> contratDepasseAn = contratRepository.contratDepasseAn(); // afficher la liste des contrats depasse 1 an
     for (Equipe e : equipes) {
       cptEtudiant = 0;
-      Set<Etudiant> etudiants = e.getEtudiants();
+      Set<Etudiant> etudiants = e.getEtudiantSet();
       if (etudiants.size() >= 3) {
         for (Etudiant etudiant : etudiants) {
           int cptContrat = 0;
-          Set<Contrat> contrats = etudiant.getContrats();
+          Set<Contrat> contrats = etudiant.getContratList();
           for (Contrat c : contrats) {
 
             if (contratDepasseAn.contains(c)) {
@@ -87,5 +88,5 @@ public class EquipeService implements IEquipeService {
 
   }
 
-   */
+
 }

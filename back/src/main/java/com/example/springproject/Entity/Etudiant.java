@@ -4,12 +4,12 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 
 @Getter
 @Setter
 @ToString
-@EqualsAndHashCode
 @Builder
 @Entity
 @Table(name = "Etudiant")
@@ -28,8 +28,11 @@ public class Etudiant {
     @ManyToOne()
     Departement departement;
 
+    @ManyToOne()
+    Equipe equipe;
+
     @OneToMany(mappedBy = "etudiant",fetch = FetchType.EAGER)
-    private List<Contrat> contratList;
+    private Set<Contrat> contratList;
 
 
 }
