@@ -79,7 +79,7 @@ public class ContratService implements IContratService {
     }
     @Override
     public Integer nbContratsValides(Date endDate, Date startDate) {
-        return myRepository.countContratByDateDebutContratAfterAndDateFinContratBefore(endDate,startDate);
+        return myRepository.countContratByDateDebutContratAfterAndDateFinContratBefore(endDate,startDate).intValue();
     }
 
     @Override

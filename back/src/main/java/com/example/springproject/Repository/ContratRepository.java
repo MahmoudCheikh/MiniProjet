@@ -21,6 +21,13 @@ public interface ContratRepository extends CrudRepository<Contrat,Integer> {
   Integer countContratByDateDebutContratAfterAndDateFinContratBefore(Date dateFinContrat,Date dateDebutContrat);
 
 
+  /*
+  public Long countByDateDebutContratAfterAndDateFinContratBeforeAndArchive(Date startDate, Date endDate, boolean x);
+  public Long countByArchiveAndEtudiantIdEtudiant(boolean x, Long idEtudiant);
+
+
+   */
+
   @Query("select  SUM(c.montantContrat) from Contrat c where c.dateFinContrat<=?2 and c.dateDebutContrat>=?1")
   float getChiffreAffaireEntreDeuxDate(Date startDate, Date endDate);
 

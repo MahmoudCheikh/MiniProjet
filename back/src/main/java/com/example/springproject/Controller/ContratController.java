@@ -67,7 +67,7 @@ public class ContratController {
     Integer nbContratsValides(@PathVariable("end") @DateTimeFormat(pattern = "yyyy-MM-dd")  Date end ,@PathVariable("start")@DateTimeFormat(pattern = "yyyy-MM-dd")  Date start) {
         return ContratService.nbContratsValides(end,start) ;
     }
-    
+
     @GetMapping("/contratExp/")
     List<Contrat> contratExp(){
         return ContratService.contratExp();
