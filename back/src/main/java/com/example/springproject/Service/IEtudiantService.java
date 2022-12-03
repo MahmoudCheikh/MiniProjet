@@ -18,4 +18,5 @@ public interface IEtudiantService {
 
     Contrat affectContratToEtudiant (Contrat c, String nom, String prenom);
 
+    void updateStudent(Integer studentId, Integer depId);
 }

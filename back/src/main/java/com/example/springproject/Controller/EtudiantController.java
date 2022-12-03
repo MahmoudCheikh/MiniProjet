@@ -52,4 +52,16 @@ public class EtudiantController {
     public Contrat affectContratToEtudiant(@RequestBody Contrat c, @PathVariable("nom") String nom, @PathVariable("prenom") String prenom) {
         return affectContratToEtudiant(c,nom,prenom);
     }
+    @PutMapping(path="affecttodep/{studentId}/{depId}")
+    public void assignEtudiantToDepartement(@PathVariable("studentId") Integer studentId,@PathVariable("depId") Integer depId) throws IllegalStateException {
+
+        EtudiantService.updateStudent(studentId,depId);
+    }
+
+
+
+
+
+
+
 }

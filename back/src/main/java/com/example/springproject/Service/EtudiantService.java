@@ -1,10 +1,9 @@
 package com.example.springproject.Service;
 
-import com.example.springproject.Entity.Contrat;
-import com.example.springproject.Entity.Equipe;
-import com.example.springproject.Entity.Etudiant;
+import com.example.springproject.Entity.*;
 import com.example.springproject.Entity.Etudiant;
 import com.example.springproject.Repository.ContratRepository;
+import com.example.springproject.Repository.DepartementRepository;
 import com.example.springproject.Repository.EtudiantRepository;
 import com.example.springproject.Repository.EtudiantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +17,8 @@ import java.util.List;
 public class EtudiantService implements IEtudiantService {
     @Autowired
     private EtudiantRepository EtudiantRepository;
+  @Autowired
+  private DepartementRepository DepartementRepository;
     private ContratRepository ContratRepository;
 
   @Override
@@ -58,6 +59,17 @@ public class EtudiantService implements IEtudiantService {
     ContratRepository.save(c);
     EtudiantRepository.save(e);
     return c;
+  }
+  @Transactional
+  @Override
+  public void updateStudent(Integer studentId, Integer depId)
+  {
+    Etudiant e=EtudiantRepository.findById(studentId).orElseThrow(() -> new IllegalStateException("studenbt doesnt exist"));
+    Departement d= DepartementRepository.findById(depId).orElseThrow(() -> new IllegalStateException("dep doesnt exist"));
+    e.setDepartement(d);
+
+
+
   }
 
 }
