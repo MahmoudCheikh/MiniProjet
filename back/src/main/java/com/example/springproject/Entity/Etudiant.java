@@ -11,7 +11,6 @@ import java.util.Set;
 @Getter
 @Setter
 @ToString
-@EqualsAndHashCode
 @Builder
 @Entity
 @Table(name = "Etudiant")
@@ -30,8 +29,11 @@ public class Etudiant {
     @ManyToOne()
     Departement departement;
 
+    @ManyToOne()
+    Equipe equipe;
+
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "etudiant",fetch = FetchType.EAGER)
-    private List<Contrat> contratList;
+    private Set<Contrat> contratList;
 
     @ManyToMany(cascade = CascadeType.ALL)
     private Set<Equipe> equipes;

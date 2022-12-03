@@ -16,13 +16,13 @@ public class LoggingAspect {
     @Before("execution(* com.example.springproject.Service.*.*(..))")
     public void logMethodEntry(JoinPoint joinPoint) {
         String name = joinPoint.getSignature().getName();
-        log.info("In method " + name + " : ");
+        log.debug("In method " + name + " : ");
     }
 
     @After("execution(* com.example.springproject.Service.*.*(..))")
     public void logMethodExit(JoinPoint joinPoint) {
         String name = joinPoint.getSignature().getName();
-        log.info("Out of  method " + name + " : ");
+        log.debug("Out of  method " + name + " : ");
     }
 }
 

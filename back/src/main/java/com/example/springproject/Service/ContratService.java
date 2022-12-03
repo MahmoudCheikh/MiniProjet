@@ -5,15 +5,17 @@ import com.example.springproject.Entity.Etudiant;
 import com.example.springproject.Entity.Specialite;
 import com.example.springproject.Repository.ContratRepository;
 import com.example.springproject.Repository.EtudiantRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
+import org.springframework.scheduling.annotation.Scheduled;
 
 import javax.transaction.Transactional;
 import java.util.Date;
 import java.util.List;
 
 @Service
+@Slf4j
 public class ContratService implements IContratService {
     @Autowired
     private ContratRepository myRepository;
@@ -82,6 +84,35 @@ public class ContratService implements IContratService {
 
     @Override
     public List<Contrat> contratExp() {
+         return myRepository.dateExpi();
+    }
+    
+    public void setArchive(Contrat c){
+        Contrat contrat = myRepository.findById(c.getIdContrat()).get();
+        contrat.setArchive(true);
+        myRepository.save(contrat);
+    }
+
+    @Scheduled(cron = "*/10 * * * * * ")
+    public void retrieveStatusContrat()
+    {
+        List<Contrat> contratsPresqueExp=myRepository.datePresqueExp();
+        List<Contrat> contratsExp=myRepository.dateExpi();
+
+        for (Contrat c : contratsExp) {
+            setArchive(c);
+        }
+
+        StringBuilder string = new StringBuilder("contrats expirants dans les 15 jours suivants :");
+        for (Contrat c : contratsPresqueExp){
+            string.append("contrat id : ").append(c.getIdContrat()).append("\n");
+            string.append("contrat debut date : ").append(c.getDateDebutContrat()).append("\n");
+            string.append("contrat date fin : ").append(c.getDateFinContrat()).append("\n");
+            string.append("specialité : ").append(c.getSpecialite()).append("\n");
+        }
+        log.info(string.toString());
+    }
+
 
         return myRepository.dateExpi();
 

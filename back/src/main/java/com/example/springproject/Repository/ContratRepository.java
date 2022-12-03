@@ -27,15 +27,17 @@ public interface ContratRepository extends CrudRepository<Contrat,Integer> {
   @Query("select c from Contrat c where   c.dateDebutContrat>=?1 and c.dateFinContrat<=?2")
   List<Contrat> contratBetween2dates(Date startDate, Date endDate);
 
-
-  @Query("select  c from Contrat c where DATEDIFF(current_date,c.dateFinContrat)=-15")
-  List<Contrat> dateExpi();
-
-  @Query("select c from Contrat c where DATEDIFF(c.dateFinContrat,c.dateDebutContrat)>=365")
-  List<Contrat> contratDepasseAn();
-
   @Modifying
   @Query("update Contrat c set c.etudiant= (select e from Etudiant e where e.nomE=:nomE and e.prenomE=:prenomE) where c.idContrat=:ce")
   public void  X(@Param("ce") int ce, @Param("nomE") String nomE, @Param("prenomE") String prenomE);
+
+  @Query("select c from Contrat c where DATEDIFF(current_date,c.dateFinContrat)<15")
+  List<Contrat> dateExpi();
+
+  @Query("select c from Contrat c where DATEDIFF(current_date,c.dateFinContrat)<15 AND current_date < c.dateFinContrat")
+  List<Contrat> datePresqueExp();
+
+  @Query("select c from Contrat c where DATEDIFF(c.dateFinContrat,c.dateDebutContrat)>=365")
+  List<Contrat> contratDepasseAn();
 
 }
