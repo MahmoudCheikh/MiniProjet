@@ -34,7 +34,7 @@ public class Contrat implements Serializable {
 
     @Enumerated(EnumType.ORDINAL)
     private Specialite specialite;
-    @JsonIgnoreProperties({"etudiant"})
+    //@JsonIgnoreProperties({"etudiant"})
 
     @ManyToOne
     Etudiant etudiant;

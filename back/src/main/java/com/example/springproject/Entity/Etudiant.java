@@ -1,5 +1,6 @@
 package com.example.springproject.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
 import javax.persistence.*;
@@ -29,7 +30,7 @@ public class Etudiant {
     @ManyToOne()
     Departement departement;
 
-    @OneToMany(mappedBy = "etudiant",fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "etudiant",fetch = FetchType.EAGER)
     private List<Contrat> contratList;
 
     @ManyToMany(cascade = CascadeType.ALL)

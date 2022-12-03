@@ -51,16 +51,6 @@ public class EtudiantService implements IEtudiantService {
     return EtudiantRepository.findById(U).get();
   }
 
-
-  public Contrat affectContratToEtudiant(Contrat c, String nom, String prenom) {
-    Etudiant e=EtudiantRepository.findOneByNomEAndPrenomE(nom,prenom);
-
-    e.getContratList().add(c);
-    c.setEtudiant(e);
-    contratRepository.save(c);
-    EtudiantRepository.save(e);
-    return c;
-  }
   @Override
   public List<Etudiant> getEtudiantsByDepartement(Integer idDepart) {
     return EtudiantRepository.findEtudiantByDepartement(idDepart);
@@ -79,6 +69,16 @@ public class EtudiantService implements IEtudiantService {
 
     return e ;
 
+  }
+  @Override
+  public Contrat affectContratToEtudiant(Contrat ce, String nomE, String prenomE) {
+    Etudiant e=EtudiantRepository.findEtudiantByNomPrenom(nomE,prenomE);
+
+    e.getContratList().add(ce);
+    ce.setEtudiant(e);
+    contratRepository.save(ce);
+    EtudiantRepository.save(e);
+    return ce;
   }
 
 }
