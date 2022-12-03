@@ -70,15 +70,6 @@ public class EtudiantService implements IEtudiantService {
     return e ;
 
   }
-  @Override
-  public Contrat affectContratToEtudiant(Contrat ce, String nomE, String prenomE) {
-    Etudiant e=EtudiantRepository.findEtudiantByNomPrenom(nomE,prenomE);
 
-    e.getContratList().add(ce);
-    ce.setEtudiant(e);
-    contratRepository.save(ce);
-    EtudiantRepository.save(e);
-    return ce;
-  }
 
 }

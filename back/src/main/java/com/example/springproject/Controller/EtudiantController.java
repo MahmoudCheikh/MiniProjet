@@ -52,10 +52,7 @@ public class EtudiantController {
     public void addAndAssignEtudiantToEquipeAndContract(@RequestBody Etudiant etudiant, @PathVariable("idContrat")Integer idContrat ,@PathVariable("idequipe") Integer idequipe ) {
         EtudiantService.addAndAssignEtudiantToEquipeAndContract(etudiant,idContrat,idequipe);
     }
-    @PutMapping ("/affectContratToEtudiant/{nomE}/{prenomE}")
-    public Contrat affectContratToEtudiant(@RequestBody Contrat c, @PathVariable("nomE") String nomE, @PathVariable("prenomE") String prenomE) {
-        return EtudiantService.affectContratToEtudiant(c,nomE,prenomE);
-    }
+
     @GetMapping("/list/{idDepart}")
     List<Etudiant> retrieveAllEtudiants(@PathVariable("idDepart") Integer idDepart){
         return EtudiantService.getEtudiantsByDepartement(idDepart);
