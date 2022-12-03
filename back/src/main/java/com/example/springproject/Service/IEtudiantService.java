@@ -15,7 +15,7 @@ public interface IEtudiantService {
     List<Etudiant> findAll();
 
     Etudiant findById(Integer C);
-    public Etudiant addAndAssignEtudiantToEquipeAndContract(Etudiant e, Integer idContrat,Integer idEquipe);
+    void addAndAssignEtudiantToEquipeAndContract(Etudiant e, Integer idContrat,Integer idEquipe);
 
     List<Etudiant> getEtudiantsByDepartement(Integer idDepart);
 

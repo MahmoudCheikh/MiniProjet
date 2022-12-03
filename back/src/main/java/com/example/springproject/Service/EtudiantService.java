@@ -71,17 +71,15 @@ public class EtudiantService implements IEtudiantService {
   }
 
   @Transactional
-  public Etudiant addAndAssignEtudiantToEquipeAndContract(Etudiant e, Integer idContrat, Integer idEquipe) {
+  public void addAndAssignEtudiantToEquipeAndContract(Etudiant e, Integer idContrat, Integer idEquipe) {
     Contrat contrat = contratRepository.findById(idContrat).get();
     Equipe equipe = equipeRepository.findById(idEquipe).get();
     e.getContratList().add(contrat);
     e.getEquipes().add(equipe);
-    // contrat.setEtudiant(e);
+//    EtudiantRepository.addAndAssignEtudiantToEquipeAndContract(e,idContrat,idEquipe);
     EtudiantRepository.save(e);
     //etudiantRepository.save(contrat);
     System.out.println(e.getContratList());
-
-    return e ;
 
   }
 
