@@ -93,7 +93,7 @@ public class ContratService implements IContratService {
         myRepository.save(contrat);
     }
 
-    @Scheduled(cron = "*/10 * * * * * ")
+    @Scheduled(cron = "* * 1 * * * ")
     public void retrieveStatusContrat()
     {
         List<Contrat> contratsPresqueExp=myRepository.datePresqueExp();

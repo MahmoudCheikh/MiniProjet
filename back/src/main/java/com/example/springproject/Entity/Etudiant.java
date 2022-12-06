@@ -1,6 +1,7 @@
 package com.example.springproject.Entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 
 import javax.persistence.*;
@@ -32,6 +33,7 @@ public class Etudiant {
     @ManyToOne()
     Equipe equipe;
 
+    @JsonManagedReference
     @OneToMany(cascade = CascadeType.ALL,mappedBy = "etudiant",fetch = FetchType.EAGER)
     private Set<Contrat> contratList;
 

@@ -1,4 +1,5 @@
 package com.example.springproject.Entity;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -36,6 +37,7 @@ public class Contrat implements Serializable {
     private Specialite specialite;
     //@JsonIgnoreProperties({"etudiant"})
 
+    @JsonBackReference
     @ManyToOne
     Etudiant etudiant;
 

@@ -13,13 +13,13 @@ import org.springframework.stereotype.Component;
 @Slf4j
 public class LoggingAspect {
 
-    @Before("execution(* com.example.springproject.Service.*.*(..))")
+    //@Before("execution(* com.example.springproject.Service.*.*(..))")
     public void logMethodEntry(JoinPoint joinPoint) {
         String name = joinPoint.getSignature().getName();
         log.debug("In method " + name + " : ");
     }
 
-    @After("execution(* com.example.springproject.Service.*.*(..))")
+   // @After("execution(* com.example.springproject.Service.*.*(..))")
     public void logMethodExit(JoinPoint joinPoint) {
         String name = joinPoint.getSignature().getName();
         log.debug("Out of  method " + name + " : ");

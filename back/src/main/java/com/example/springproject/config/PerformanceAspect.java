@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 @Slf4j
 public class PerformanceAspect {
 
-    @Around("execution(* com.example.springproject.Service.*.*(..))")
+  //  @Around("execution(* com.example.springproject.Service.*.*(..))")
     public Object profile(ProceedingJoinPoint pjp) throws Throwable {
         long start = System.currentTimeMillis();
         Object obj = pjp.proceed();
