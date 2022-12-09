@@ -5,10 +5,12 @@ import com.example.springproject.Entity.Paiement;
 import com.example.springproject.Entity.Universite;
 import com.example.springproject.Service.IPaiementService;
 import com.example.springproject.Service.PaiementService;
+import jdk.nashorn.internal.ir.ObjectNode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/Paiement")
@@ -26,9 +28,15 @@ public class PaiementController {
 
     @PostMapping("/addPaiement")
     @ResponseBody
-    public Paiement ajouterPaiement(@RequestBody Paiement p) {
-        int Paiement = paiementService.ajouterPaiement(p);
-        return p;
+    public Paiement ajouterPaiement(@RequestBody Map<String, String> json) {
+        int mnt  = Integer.parseInt(json.get("mnt"));
+        int idE  = Integer.parseInt(json.get("idE"));
+        int idC  = Integer.parseInt(json.get("idC"));
+
+
+
+        Paiement paiement = paiementService.ajouterPaiement(mnt , idE , idC);
+        return paiement;
     }
 
     @DeleteMapping("/removePaiement/{Paiement-id}")

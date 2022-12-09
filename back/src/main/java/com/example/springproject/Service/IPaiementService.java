@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface IPaiementService {
 
-    int ajouterPaiement(Paiement P);
+    Paiement ajouterPaiement(int mnt ,int  idE , int idC);
 
     Boolean deletePaiement(Paiement P);
 
