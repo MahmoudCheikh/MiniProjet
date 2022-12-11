@@ -54,9 +54,15 @@ public class PaiementController {
 
     @PutMapping("/modifyPaiement")
     @ResponseBody
-    public Paiement updatePaiement(@RequestBody Paiement p) {
-        Boolean Paiement = paiementService.updatePaiement(p);
-        return p;
+    public boolean updatePaiement(@RequestBody Map<String, String> json) {
+        int idP  = Integer.parseInt(json.get("idP"));
+        int mnt  = Integer.parseInt(json.get("mnt"));
+        int idE  = Integer.parseInt(json.get("idE"));
+        int idC  = Integer.parseInt(json.get("idC"));
+
+
+        Boolean Paiement = paiementService.updatePaiement( idP ,  mnt ,  idE ,  idC);
+        return true;
     }
 
 

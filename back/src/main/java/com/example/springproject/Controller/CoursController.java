@@ -41,7 +41,7 @@ public class CoursController {
         return coursService.findById(c);
     }
 
-    @PutMapping("/modifyCours")
+    @PostMapping("/modifyCours")
     @ResponseBody
     public Cours updateCours(@RequestBody Cours c) {
         Boolean Cours = coursService.updateCours(c);

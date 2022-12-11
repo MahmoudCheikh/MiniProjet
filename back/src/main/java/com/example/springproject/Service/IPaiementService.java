@@ -10,7 +10,7 @@ public interface IPaiementService {
 
     Boolean deletePaiement(Paiement P);
 
-    Boolean updatePaiement(Paiement P);
+    Boolean updatePaiement(int idP , int mnt ,int  idE , int idC);
 
     List<Paiement> findAll();
 

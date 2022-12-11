@@ -42,9 +42,17 @@ public class PaiementService implements IPaiementService{
     }
 
     @Override
-    public Boolean updatePaiement(Paiement P) {
-        PaiementRepository.save(P);
-        return  PaiementRepository.findById((Integer) P.getIdPaiement()).equals(P);
+    public Boolean updatePaiement(int idP , int mnt ,int  idE , int idC) {
+
+        Etudiant etudiant = etudiantRepository.findById(idE).get();
+        Contrat contrat = contratRepository.findById(idC).get();
+        Paiement paiement = PaiementRepository.findById(idP).get();
+        paiement.setEtudiant(etudiant);
+        paiement.setContrat(contrat);
+        paiement.setMontant(mnt);
+
+        PaiementRepository.save(paiement);
+        return  PaiementRepository.findById((Integer) paiement.getIdPaiement()).equals(paiement);
     }
 
     @Override

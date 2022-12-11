@@ -14,6 +14,7 @@ import java.util.List;
 public class Universite {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+
     @Column(name = "id_univ")
     private Integer idUniv;
     private String nomUniv;

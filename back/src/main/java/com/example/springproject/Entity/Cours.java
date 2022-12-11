@@ -19,7 +19,8 @@ public class Cours {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id_cours")
     private Integer IdCours;
-    private Module Nom;
+
+    private String Nom;
     private String description;
     private Integer credit;
     private Integer nbHeure;
