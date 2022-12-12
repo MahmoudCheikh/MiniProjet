@@ -1,4 +1,4 @@
-package com.example.springproject.Controller;
+    package com.example.springproject.Controller;
 
 import com.example.springproject.Entity.Cours;
 import com.example.springproject.Service.ICoursService;

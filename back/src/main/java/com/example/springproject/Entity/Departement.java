@@ -19,10 +19,9 @@ public class Departement {
         @GeneratedValue (strategy = GenerationType.IDENTITY)
         private int idDepart;
         private String  nomDepart;
+        private String  universite;
 
 
-        @ManyToOne()
-        Universite universite;
 
         @JsonBackReference
         @OneToMany(cascade = CascadeType.ALL,mappedBy = "departement")
